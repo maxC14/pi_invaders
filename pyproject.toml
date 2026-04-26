@@ -7,5 +7,15 @@ build-backend = "hatchling.build"
 name = "pi-invaders"
 version = "0.1.0"
 dependencies = [
-    "pygame"
+    "mpmath",
+    "pygame",
+    "pygame-menu"
 ]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["pi_invaders"]
+
+
+[tool.hatch.build.targets.wheel.force-include]
+"pi_invaders/game_settings/images" = "pi_invaders/game_settings/images"
