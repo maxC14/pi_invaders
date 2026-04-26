@@ -15,6 +15,7 @@ class GameMode:
     enemy_size: tuple[int, int]
     stale_enemy_image: str | None
     earth_image: str
+    earth_size: tuple[int, int]
     health_label: str
 
 
@@ -31,6 +32,7 @@ PIES_MODE = GameMode(
     enemy_size=(60, 60),
     stale_enemy_image="pi_symbol.png",
     earth_image="earth.png",
+    earth_size=(380, 380),
     health_label="Earth Crust Health",
 )
 
@@ -47,6 +49,7 @@ PI_MODE = GameMode(
     enemy_size=(80, 80),
     stale_enemy_image=None,
     earth_image="pi_earth.png",
+    earth_size=(310, 310),
     health_label="Pi Base Health",
 )
 

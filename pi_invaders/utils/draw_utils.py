@@ -38,7 +38,7 @@ def draw_earth(surface, health, max_health, game_mode=None):
     _width, height = surface.get_size()
 
     earth_x = 5
-    earth_size = (310, 310)
+    earth_size = game_mode.earth_size
     earth_y = height - earth_size[1]
 
     draw_health_bar(surface, health, max_health)
