@@ -169,7 +169,13 @@ def draw_score_indicators(surface, score_indicators, now):
         surface.blit(text_surface, text_rect)
 
 
-def draw_game_over(surface, score, longest_pi_streak, max_level_reached):
+def draw_game_over(
+    surface,
+    score,
+    longest_pi_streak,
+    longest_pi_streak_digits,
+    max_level_reached,
+):
     width, height = surface.get_size()
 
     overlay = pygame.Surface((width, height))
@@ -185,7 +191,7 @@ def draw_game_over(surface, score, longest_pi_streak, max_level_reached):
     text2 = font_medium.render(f"Final Score: {score}", True, WHITE)
 
     text3 = font_medium.render(
-        f"Longest Streak: {longest_pi_streak}",
+        f"Longest Streak: {longest_pi_streak} terms",
         True,
         WHITE,
     )
@@ -195,6 +201,16 @@ def draw_game_over(surface, score, longest_pi_streak, max_level_reached):
         True,
         WHITE,
     )
+
+    pi_terms = _format_pi_terms(longest_pi_streak_digits)
+    pi_term_lines = [
+        pi_terms[i : i + 42]
+        for i in range(0, len(pi_terms), 42)
+    ] or ["Pi terms: none"]
+    pi_term_surfaces = [
+        font_small.render(line, True, WHITE)
+        for line in pi_term_lines[:3]
+    ]
 
     text5 = font_small.render(
         "Press R to restart, ESC/P for menu, or Q to quit",
@@ -210,7 +226,21 @@ def draw_game_over(surface, score, longest_pi_streak, max_level_reached):
 
     surface.blit(text4, text4.get_rect(center=(width // 2, height // 2 + 82)))
 
-    surface.blit(text5, text5.get_rect(center=(width // 2, height // 2 + 132)))
+    for i, pi_term_surface in enumerate(pi_term_surfaces):
+        surface.blit(
+            pi_term_surface,
+            pi_term_surface.get_rect(center=(width // 2, height // 2 + 122 + i * 26)),
+        )
+
+    prompt_y = height // 2 + 142 + len(pi_term_surfaces) * 26
+    surface.blit(text5, text5.get_rect(center=(width // 2, prompt_y)))
+
+
+def _format_pi_terms(pi_digits):
+    if not pi_digits:
+        return "Pi terms: none"
+
+    return f"Pi terms: {pi_digits[0]}.{''.join(pi_digits[1:])}"
 
 
 def draw_stars(screen):

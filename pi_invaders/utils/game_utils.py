@@ -47,6 +47,8 @@ def reset_game(game_mode=None, game_options=None):
 
         "longest_pi_streak": 0,
 
+        "longest_pi_streak_digits": [],
+
         "game_over": False,
 
         "last_spawn_time": pygame.time.get_ticks(),

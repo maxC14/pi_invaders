@@ -1,11 +1,10 @@
 import pygame
 
+from pi_invaders.game_settings.settings import BULLET_SPEED
 from pi_invaders.game_settings.colors import YELLOW
 from pi_invaders.game_settings.fonts import font_medium
 from pi_invaders.game_settings.game_modes import get_selected_game_mode
 from pi_invaders.game_settings.image_assets import load_image
-
-BULLET_SPEED = 10
 
 
 class Bullet:

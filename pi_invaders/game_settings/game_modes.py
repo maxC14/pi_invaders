@@ -22,7 +22,7 @@ class GameMode:
 PIES_MODE = GameMode(
     key="pies",
     label="Team Pie",
-    player_image="cherry_pie.png",
+    player_image="pumpkin_pie.png",
     player_size=(120, 120),
     bullet_type="image",
     bullet_image="whipped_cream.png",
@@ -50,7 +50,7 @@ PI_MODE = GameMode(
     stale_enemy_image=None,
     earth_image="pi_earth.png",
     earth_size=(310, 310),
-    health_label="Pi Base Health",
+    health_label="Pi Earth Health",
 )
 
 GAME_MODES = {
